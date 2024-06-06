@@ -19,7 +19,7 @@ export default function Stopwatch () {
     return (
       <div className="container">
         <h1>Stopwatch</h1>
-        <p>Time: <span>{mins}:{secs}</span></p>
+        <p>Time: {mins}:{secs}</p>
           <button onClick={()=>setIsRunning(!isRunning)}>
             {!isRunning? "Start": "Stop"}
           </button>
