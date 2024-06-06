@@ -16,10 +16,11 @@ export default function Stopwatch () {
     let mins = String(parseInt(time/60))
     let secs = String(time % 60)
     secs.length===1 && (secs='0'+secs)
+    let display = 'Time: '+mins+":"+secs
     return (
       <div className="container">
         <h1>Stopwatch</h1>
-        <p>Time: {mins}:{secs}</p>
+        <p>{display}</p>
           <button onClick={()=>setIsRunning(!isRunning)}>
             {!isRunning? "Start": "Stop"}
           </button>
