@@ -8,15 +8,18 @@ export default function Stopwatch () {
     useEffect(() => {
       let intervalId
       if (isRunning) {
-        intervalId = setInterval(() => setTime(time + 1), 1000)
+        console.log('Time: ', time)
+        intervalId = setInterval(() => setTime((prevTime)=>(prevTime + 1)), 1000)
+      } else {
+        clearInterval(intervalId)
       }
       return () => clearInterval(intervalId)
-    }, [isRunning, time])
+    }, [isRunning])
 
     let mins = String(parseInt(time/60))
     let secs = String(time % 60)
     secs.length===1 && (secs='0'+secs)
-    let display = 'Time: '+mins+":"+secs
+    let display = String('Time: '+mins+":"+secs)
     return (
       <div className="container">
         <h1>Stopwatch</h1>
@@ -25,7 +28,6 @@ export default function Stopwatch () {
             {!isRunning? "Start": "Stop"}
           </button>
           <button onClick={()=>{
-            setIsRunning(false)
             setTime(0)
           }}>
             Reset
